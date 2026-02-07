@@ -1,0 +1,174 @@
+================================================================================
+                    APPLICATION LOGS - KEY METRICS TABLE
+================================================================================
+Analysis Period: February 1-3, 2026 (3 days)
+Total Requests: 50
+Generated: February 7, 2026
+
+================================================================================
+                         OVERALL PERFORMANCE METRICS
+================================================================================
+
+Metric                          Value                   Status
+--------------------------------------------------------------------------------
+Total Requests                  50                      Low Volume
+Successful Requests (200)       25 (50.00%)            🔴 CRITICAL
+Failed Requests (4xx/5xx)       25 (50.00%)            🔴 CRITICAL
+Unique Users                    23                      Normal
+Average Response Time           1,106.92 ms            🟡 SLOW
+Median Response Time            1,215.00 ms            🟡 SLOW
+Min Response Time               185.00 ms              ✅ Good
+Max Response Time               1,783.00 ms            🔴 Very Slow
+Response Time Std Dev           463.30 ms              High Variability
+
+================================================================================
+                    PERFORMANCE BY REQUEST TYPE (DETAILED)
+================================================================================
+
+Request Type      | Total | Avg (ms) | Median | Min  | Max  | Errors | Error %
+--------------------------------------------------------------------------------
+GET /reports      |   8   |  837.88  |  827.0 | 206  | 1461 |   6    | 75.00% 🔴
+GET /login        |   9   | 1133.56  | 1189.0 | 419  | 1690 |   6    | 66.67% 🔴
+POST /order       |   5   | 1087.40  | 1329.0 | 370  | 1529 |   3    | 60.00% 🔴
+GET /dashboard    |   8   | 1256.50  | 1251.5 | 385  | 1783 |   3    | 37.50% 🟡
+GET /settings     |  14   | 1132.29  | 1275.5 | 185  | 1692 |   5    | 35.71% 🟡
+POST /login       |   6   | 1183.33  | 1414.5 | 301  | 1539 |   2    | 33.33% 🟡
+
+Legend: 🔴 Critical (>60%) | 🟡 High Priority (30-60%) | ✅ Acceptable (<30%)
+
+================================================================================
+                         ERROR DISTRIBUTION BY TYPE
+================================================================================
+
+Status Code | Count | Percentage | Description                | Severity
+--------------------------------------------------------------------------------
+200         |  25   |   50.00%   | Success                    | ✅ Normal
+401         |   7   |   14.00%   | Unauthorized               | 🔴 Critical
+404         |   6   |   12.00%   | Not Found                  | 🔴 Critical
+500         |   6   |   12.00%   | Internal Server Error      | 🔴 Critical
+504         |   6   |   12.00%   | Gateway Timeout            | 🔴 Critical
+
+Total Errors: 25 (50% of all requests)
+
+================================================================================
+                    ERRORS BY REQUEST TYPE AND STATUS CODE
+================================================================================
+
+Request Type      | 401 | 404 | 500 | 504 | Total Errors
+--------------------------------------------------------------------------------
+GET /dashboard    |  0  |  2  |  1  |  0  |      3
+GET /login        |  4  |  1  |  1  |  0  |      6
+GET /reports      |  1  |  2  |  2  |  1  |      6
+GET /settings     |  1  |  0  |  1  |  3  |      5
+POST /login       |  0  |  0  |  0  |  2  |      2
+POST /order       |  1  |  1  |  1  |  0  |      3
+--------------------------------------------------------------------------------
+TOTAL             |  7  |  6  |  6  |  6  |     25
+
+================================================================================
+                           PEAK USAGE ANALYSIS
+================================================================================
+
+TOP 5 PEAK HOURS (by request count):
+Rank | Hour  | Requests | Notes
+--------------------------------------------------------------------------------
+  1  | 18:00 |    6     | Evening peak (expected)
+  2  | 03:00 |    5     | ⚠️ Unusual - automated processes?
+  3  | 08:00 |    4     | Morning peak (expected)
+  4  | 13:00 |    3     | Lunch hour
+  5  | 02:00 |    3     | Late night activity
+
+DAILY REQUEST DISTRIBUTION:
+Day              | Date       | Requests | Percentage
+--------------------------------------------------------------------------------
+Monday           | 2026-02-02 |    25    |   50.00%  ⚠️ Spike
+Sunday           | 2026-02-01 |    13    |   26.00%
+Tuesday          | 2026-02-03 |    12    |   24.00%
+
+================================================================================
+                         TOP ACTIVE USERS
+================================================================================
+
+Rank | User ID | Request Count | Percentage of Total
+--------------------------------------------------------------------------------
+  1  |  U109   |      4        |      8.00%
+  2  |  U121   |      4        |      8.00%
+  3  |  U124   |      3        |      6.00%
+  4  |  U105   |      3        |      6.00%
+  5  |  U129   |      3        |      6.00%
+
+Average requests per user: 2.17
+
+================================================================================
+                         CRITICAL ISSUES SUMMARY
+================================================================================
+
+Priority | Issue                          | Impact        | Action Required
+--------------------------------------------------------------------------------
+   P1    | GET /reports 75% failure       | Business Intel| Immediate fix
+   P1    | GET /login 67% failure         | User Access   | Immediate fix
+   P1    | POST /order 60% failure        | Revenue       | Immediate fix
+   P2    | 401 Auth errors (14%)          | Security      | Within 24h
+   P2    | 504 Timeouts (12%)             | Performance   | Within 24h
+   P2    | 404 Routing errors (12%)       | Functionality | Within 24h
+   P3    | High response times (1.1s avg) | UX            | Within 1 week
+
+================================================================================
+                         RECOMMENDED ACTIONS
+================================================================================
+
+IMMEDIATE (Next 24 Hours):
+☐ Enable detailed error logging for all endpoints
+☐ Investigate GET /reports backend service
+☐ Audit authentication service configuration
+☐ Review API routing and endpoint definitions
+☐ Check database connection pools and timeouts
+
+SHORT-TERM (Within 1 Week):
+☐ Fix all 404 routing issues
+☐ Optimize slow endpoints (target <500ms)
+☐ Implement comprehensive monitoring (APM)
+☐ Set up real-time alerting for error thresholds
+☐ Conduct root cause analysis for each error type
+
+LONG-TERM (Within 1 Month):
+☐ Implement retry logic and circuit breakers
+☐ Establish SLA targets (99.9% uptime, <200ms response)
+☐ Increase test coverage for critical paths
+☐ Set up automated performance testing in CI/CD
+☐ Implement rate limiting and load balancing
+
+================================================================================
+                              CONCLUSION
+================================================================================
+
+SYSTEM STATUS: 🔴 CRITICAL - IMMEDIATE ACTION REQUIRED
+
+The application is experiencing a 50% error rate, making it unreliable for
+production use. Multiple systems are affected (authentication, routing, backend
+services), requiring coordinated debugging and fixes.
+
+Priority endpoints for immediate attention:
+1. GET /reports (75% failure)
+2. GET /login (67% failure)
+3. POST /order (60% failure)
+
+These three endpoints account for the majority of failures and represent
+critical user journeys (access, business intelligence, and revenue generation).
+
+================================================================================
+                           FILES GENERATED
+================================================================================
+
+1. Application_Logs_Analysis_Report.md  - Comprehensive written analysis
+2. ANALYSIS_SUMMARY.md                  - Quick reference guide
+3. KEY_METRICS_TABLE.txt                - This metrics table
+4. application_logs_analysis.png        - Visual dashboard (6 charts)
+5. error_analysis_detailed.png          - Detailed error visualizations
+6. analyze_logs.py                      - Data analysis script
+7. create_visualizations.py             - Visualization generation script
+
+================================================================================
+                         END OF METRICS TABLE
+================================================================================
+
