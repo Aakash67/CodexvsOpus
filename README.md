@@ -1,1 +1,1 @@
-# CodexvsOpus
+# Codex vs Opus
